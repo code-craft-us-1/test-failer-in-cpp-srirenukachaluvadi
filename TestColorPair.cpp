@@ -4,14 +4,15 @@
 #include<sstream>
 #include <vector>
 #include "ColorPair.h"
-using namespace TelCoColorCoder;
+
 std::string trim(std::string m)
 {
     std::string y = "";
     for (int i = 0; i < m.length(); i++)
     {
         if (m[i] != ' ')y += m[i];
-    }return y;
+    }
+    return y;
 }
 
 int getMajorIndex(std::string s)
@@ -36,7 +37,7 @@ std::vector<std::string> splitStrings(std::stringstream& result, char delimiter)
 
 void TestColorPairPrint()
 {
-    std::stringstream result = printColorMap();
+    std::stringstream result = TelCoColorCoder::printColorMap();
     std::vector<std::string> strings = splitStrings(result, '\n');
     assert(strings.size() == 25);
 
@@ -47,8 +48,8 @@ void TestColorPairPrint()
         assert(printSt.size() == 3);
         int minor = getMinorIndex(printSt[0]);
         int major = getMajorIndex(printSt[0]);
-        assert(printSt[1] == getMajor(major));
-        assert(printSt[2] == getMinor(minor));
+        assert(printSt[1] == TelCoColorCoder::getMajor(major));
+        assert(printSt[2] == TelCoColorCoder::getMinor(minor));
     }
 
 
