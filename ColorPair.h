@@ -13,10 +13,12 @@ namespace TelCoColorCoder
     int getMaxLen(const char* a[])
     {
         int minorWidth = strlen(a[0]);
-        for (int i = 0; i < static_cast<int>(sizeof(*a)); i++)
+        for (unsigned int i = 0; i < static_cast<unsigned int>(sizeof(*a)); i++)
         {
-            if (minorWidth < strlen(a[i]))minorWidth = strlen(a[i]);
-        }return minorWidth;
+            if (minorWidth < static_cast<int>(strlen(a[i])))
+                minorWidth = static_cast<int>(strlen(a[i]));
+        }
+        return minorWidth;
     }
     std::stringstream printColorMap() {
         int majorWidth = strlen(majorColor[0]);

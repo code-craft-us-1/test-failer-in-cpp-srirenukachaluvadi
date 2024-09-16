@@ -7,7 +7,7 @@
 
 std::string trim(std::string m) {
     std::string y = "";
-    for (int i = 0; i < m.length(); i++) {
+    for (int i = 0; i < static_cast<int>(m.length()); i++) {
         if (m[i] != ' ')y += m[i];
     }
     return y;
@@ -35,10 +35,10 @@ void TestColorPairPrint() {
     std::vector<std::string> strings = splitStrings(result, '\n');
     assert(strings.size() == 25);
 
-    for (int i = 0; i < strings.size(); i++) {
+    for (int i = 0; i < static_cast<int>(strings.size()); i++) {
         std::stringstream k(strings[i]);
         std::vector<std::string> printSt = splitStrings(k, '|');
-        assert(printSt.size() == 3);
+        assert(static_cast<int>(printSt.size()) == 3);
         int minor = getMinorIndex(printSt[0]);
         int major = getMajorIndex(printSt[0]);
         assert(printSt[1] == TelCoColorCoder::getMajor(major));
