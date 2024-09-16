@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include<cstring>
 #include <iomanip>
 #include<sstream>
 #include <iostream>
@@ -11,15 +12,15 @@ namespace TelCoColorCoder
 
     int getMaxLen(const char* a[])
     {
-        int minorWidth = std::strlen(a[0]);
-        for (int i = 0; i < sizeof(*a); i++)
+        int minorWidth = strlen(a[0]);
+        for (int i = 0; i < static_cast<int>(sizeof(*a)); i++)
         {
             if (minorWidth < strlen(a[i]))minorWidth = strlen(a[i]);
         }return minorWidth;
     }
     std::stringstream printColorMap() {
-        int majorWidth = std::strlen(majorColor[0]);
-        int minorWidth = std::strlen(minorColor[0]);
+        int majorWidth = strlen(majorColor[0]);
+        int minorWidth = strlen(minorColor[0]);
         minorWidth = getMaxLen(minorColor);
         majorWidth = getMaxLen(majorColor);
         std::stringstream s;
