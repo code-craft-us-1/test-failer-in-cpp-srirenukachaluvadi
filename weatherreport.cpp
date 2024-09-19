@@ -9,7 +9,7 @@
 /// without needing the actual Sensor during development
 
 class SensorStub : public WeatherSpace::IWeatherSensor {
-public:
+    public:
     SensorStub(int humidity,int precipitation, int temperature,int windSpeed) {
         this->humidity = humidity;
         this->precipitation = precipitation;
@@ -18,22 +18,18 @@ public:
     }
 
     int Humidity() const override {
-        //return 72;
         return humidity;
     }
 
     int Precipitation() const override {
-        //return 70;
         return precipitation;
     }
 
     double TemperatureInC() const override {
-       // return 26;
         return temperature;
     }
 
     int WindSpeedKMPH() const override {
-        //return 52;
         return windSpeed;
     }
 };
