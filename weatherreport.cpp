@@ -10,7 +10,7 @@
 
 class SensorStub : public WeatherSpace::IWeatherSensor {
     public:
-    SensorStub(int humidity,int precipitation, int temperature,int windSpeed) {
+    SensorStub(int humidity, int precipitation, int temperature, int windSpeed) {
         this->humidity = humidity;
         this->precipitation = precipitation;
         this->temperature = temperature;
@@ -54,7 +54,7 @@ std::string Report(const WeatherSpace::IWeatherSensor& sensor) {
 // Test a rainy day
 
 void TestRainy() {
-    SensorStub* sensor=new SensorStub(72,70,26,52);
+    SensorStub* sensor=new SensorStub(72, 70, 26, 52);
     std::string report = Report(*sensor);
     std::cout << report << std::endl;
     assert(report.find("rain") != std::string::npos);
@@ -65,7 +65,7 @@ void TestRainy() {
 void TestHighPrecipitationAndLowWindspeed() {
     // This instance of stub needs to be different-
     // to give high precipitation (>60) and low wind-speed (<50)
-    SensorStub* sensor=new SensorStub(72,70,26,30);
+    SensorStub* sensor = new SensorStub(72, 70, 26, 30);
 
     // strengthen the assert to expose the bug
     // (function returns Sunny day, it should predict rain)
