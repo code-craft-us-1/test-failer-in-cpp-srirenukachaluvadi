@@ -9,7 +9,7 @@
 /// without needing the actual Sensor during development
 
 class SensorStub : public WeatherSpace::IWeatherSensor {
-    public:
+ public:
     SensorStub(int humidity, int precipitation, int temperature, int windSpeed) {
         this->humidity = humidity;
         this->precipitation = precipitation;
@@ -54,7 +54,7 @@ std::string Report(const WeatherSpace::IWeatherSensor& sensor) {
 // Test a rainy day
 
 void TestRainy() {
-    SensorStub* sensor=new SensorStub(72, 70, 26, 52);
+    SensorStub* sensor = new SensorStub(72, 70, 26, 52);
     std::string report = Report(*sensor);
     std::cout << report << std::endl;
     assert(report.find("rain") != std::string::npos);
