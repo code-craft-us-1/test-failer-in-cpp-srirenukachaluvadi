@@ -10,13 +10,13 @@
 
 class SensorStub : public WeatherSpace::IWeatherSensor {
 public:
-    SensorStub(int humidity,int precipitation, int temperature,int windSpeed)
-    {
+    SensorStub(int humidity,int precipitation, int temperature,int windSpeed) {
         this->humidity = humidity;
         this->precipitation = precipitation;
         this->temperature = temperature;
         this->windSpeed = windSpeed;
     }
+
     int Humidity() const override {
         //return 72;
         return humidity;
