@@ -9,37 +9,32 @@
 /// without needing the actual Sensor during development
 
 class SensorStub : public WeatherSpace::IWeatherSensor {
+public:
+    SensorStub(int humidity,int precipitation, int temperature,int windSpeed)
+    {
+        this->humidity = humidity;
+        this->precipitation = precipitation;
+        this->temperature = temperature;
+        this->windSpeed = windSpeed;
+    }
     int Humidity() const override {
-        return 72;
+        //return 72;
+        return humidity;
     }
 
     int Precipitation() const override {
-        return 70;
+        //return 70;
+        return precipitation;
     }
 
     double TemperatureInC() const override {
-        return 26;
+       // return 26;
+        return temperature;
     }
 
     int WindSpeedKMPH() const override {
-        return 52;
-    }
-};
-class SensorStub2 : public WeatherSpace::IWeatherSensor {
-    int Humidity() const override {
-        return 72;
-    }
-
-    int Precipitation() const override {
-        return 70;
-    }
-
-    double TemperatureInC() const override {
-        return 26;
-    }
-
-    int WindSpeedKMPH() const override {
-        return 30;
+        //return 52;
+        return windSpeed;
     }
 };
 
@@ -63,8 +58,8 @@ std::string Report(const WeatherSpace::IWeatherSensor& sensor) {
 // Test a rainy day
 
 void TestRainy() {
-    SensorStub sensor;
-    std::string report = Report(sensor);
+    SensorStub* sensor=new SensorStub(72,70,26,52);
+    std::string report = Report(*sensor);
     std::cout << report << std::endl;
     assert(report.find("rain") != std::string::npos);
 }
@@ -74,11 +69,11 @@ void TestRainy() {
 void TestHighPrecipitationAndLowWindspeed() {
     // This instance of stub needs to be different-
     // to give high precipitation (>60) and low wind-speed (<50)
-    SensorStub2 sensor;
+    SensorStub* sensor=new SensorStub(72,70,26,30);
 
     // strengthen the assert to expose the bug
     // (function returns Sunny day, it should predict rain)
-    std::string report = Report(sensor);
+    std::string report = Report(*sensor);
     assert(report.find("Sunny") == std::string::npos);
 }
 

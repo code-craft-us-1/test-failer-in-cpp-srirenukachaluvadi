@@ -6,5 +6,9 @@ namespace WeatherSpace {
         virtual int Precipitation() const = 0;
         virtual int Humidity() const = 0;
         virtual int WindSpeedKMPH() const = 0;
+        int humidity;
+        int precipitation;
+        int temperature;
+        int windSpeed;
     };
 }
