@@ -69,7 +69,7 @@ void TestHighPrecipitationAndLowWindspeed() {
 
     // strengthen the assert to expose the bug
     // (function returns Sunny day, it should predict rain)
-    std::string report = Report(*sensor);
+    std::string report = Report(sensor);
     assert(report.find("Sunny") == std::string::npos);
 }
 
