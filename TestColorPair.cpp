@@ -38,7 +38,7 @@ void TestColorPairPrint() {
     for (int i = 0; i < static_cast<int>(strings.size()); i++) {
         std::stringstream k(strings[i]);
         std::vector<std::string> printSt = splitStrings(k, '|');
-        assert(static_cast<int>(printSt.size()) == 3);
+        assert(printSt.size() == 3);
         int minor = getMinorIndex(printSt[0]);
         int major = getMajorIndex(printSt[0]);
         assert(printSt[1] == TelCoColorCoder::getMajor(major));
